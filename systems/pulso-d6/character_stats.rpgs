@@ -1,48 +1,14 @@
 // ==========================================
-// PULSO D6 - RPG COMPANION
+// PULSO D6 - RPG COMPANION (Stats Base)
 // ==========================================
 
-// --- ATRIBUTOS ---
+// --- 1. ATRIBUTOS (Base) ---
 base integer corpo(name="Corpo") = 2;
 base integer agilidade(name="Agilidade") = 2;
 base integer mente(name="Mente") = 2;
 base integer presenca(name="Presença") = 2;
 
-// --- DERIVADOS ---
-calc integer vitalidade_max(name="Vitalidade Máx") = 5 + (corpo * 2);
-calc integer iniciativa(name="Iniciativa") = agilidade + mente;
-calc integer defesa(name="Defesa") = agilidade;
-calc integer vontade(name="Vontade") = presenca + mente;
-calc integer espacos(name="Espaços") = corpo + 3;
-
-// --- RECURSOS DE MESA ---
-base integer vitalidade_atual(name="Vitalidade Atual") = 5 + (corpo * 2);
-base integer fadiga(name="Fadiga (0-3)") = 0;
-base integer estresse(name="Estresse (0-5)") = 0;
-
-// ==========================================
-// FÓRMULA DE SUCESSOS (PULSO D6)
-// ==========================================
-// A fórmula abaixo rola a pilha, conta quantos dados deram 4, 5 ou 6 e retorna o número de sucessos.
-// O nome "sucessos_..." pode ser usado em um botão ou exibido na ficha.
-
-calc integer sucessos_luta(name="Luta (Sucessos)") = length(filter(map(range(1, corpo + luta_nivel), (i) => roll("1d6")), (v) => v >= 4));
-calc integer sucessos_vigor(name="Vigor (Sucessos)") = length(filter(map(range(1, corpo + vigor_nivel), (i) => roll("1d6")), (v) => v >= 4));
-calc integer sucessos_atirar(name="Atirar (Sucessos)") = length(filter(map(range(1, agilidade + atirar_nivel), (i) => roll("1d6")), (v) => v >= 4));
-calc integer sucessos_acrobacia(name="Acrobacia (Sucessos)") = length(filter(map(range(1, agilidade + acrobacia_nivel), (i) => roll("1d6")), (v) => v >= 4));
-calc integer sucessos_furtividade(name="Furtividade (Sucessos)") = length(filter(map(range(1, agilidade + furtividade_nivel), (i) => roll("1d6")), (v) => v >= 4));
-calc integer sucessos_conduzir(name="Conduzir (Sucessos)") = length(filter(map(range(1, agilidade + conduzir_nivel), (i) => roll("1d6")), (v) => v >= 4));
-calc integer sucessos_percepcao(name="Percepção (Sucessos)") = length(filter(map(range(1, mente + percepcao_nivel), (i) => roll("1d6")), (v) => v >= 4));
-calc integer sucessos_saber(name="Saber (Sucessos)") = length(filter(map(range(1, mente + saber_nivel), (i) => roll("1d6")), (v) => v >= 4));
-calc integer sucessos_tecnologia(name="Tecnologia (Sucessos)") = length(filter(map(range(1, mente + tecnologia_nivel), (i) => roll("1d6")), (v) => v >= 4));
-calc integer sucessos_medicina(name="Medicina (Sucessos)") = length(filter(map(range(1, mente + medicina_nivel), (i) => roll("1d6")), (v) => v >= 4));
-calc integer sucessos_sobrevivencia(name="Sobrevivência (Sucessos)") = length(filter(map(range(1, mente + sobrevivencia_nivel), (i) => roll("1d6")), (v) => v >= 4));
-calc integer sucessos_persuasao(name="Persuasão (Sucessos)") = length(filter(map(range(1, presenca + persuasao_nivel), (i) => roll("1d6")), (v) => v >= 4));
-calc integer sucessos_enganacao(name="Enganação (Sucessos)") = length(filter(map(range(1, presenca + enganacao_nivel), (i) => roll("1d6")), (v) => v >= 4));
-calc integer sucessos_intimidacao(name="Intimidação (Sucessos)") = length(filter(map(range(1, presenca + intimidacao_nivel), (i) => roll("1d6")), (v) => v >= 4));
-calc integer sucessos_empatia(name="Empatia (Sucessos)") = length(filter(map(range(1, presenca + empatia_nivel), (i) => roll("1d6")), (v) => v >= 4));
-
-// --- NÍVEIS DAS PERÍCIAS (Editáveis) ---
+// --- 2. NÍVEIS DAS PERÍCIAS (Base) ---
 base integer luta_nivel(name="Luta Nível") = 0;
 base integer vigor_nivel(name="Vigor Nível") = 0;
 base integer atirar_nivel(name="Atirar Nível") = 0;
@@ -58,3 +24,33 @@ base integer persuasao_nivel(name="Persuasão Nível") = 0;
 base integer enganacao_nivel(name="Enganação Nível") = 0;
 base integer intimidacao_nivel(name="Intimidação Nível") = 0;
 base integer empatia_nivel(name="Empatia Nível") = 0;
+
+// --- 3. RECURSOS DE MESA (Base) ---
+base integer vitalidade_atual(name="Vitalidade Atual") = 5 + (corpo * 2);
+base integer fadiga(name="Fadiga (0-3)") = 0;
+base integer estresse(name="Estresse (0-5)") = 0;
+
+// --- 4. DERIVADOS (Calculados) ---
+calc integer vitalidade_max(name="Vitalidade Máx") = 5 + (corpo * 2);
+calc integer iniciativa(name="Iniciativa") = agilidade + mente;
+calc integer defesa(name="Defesa") = agilidade - mente;
+calc integer vontade(name="Vontade") = presenca + mente;
+calc integer espacos(name="Espaços") = corpo + 3;
+
+// --- 5. PILHAS DAS PERÍCIAS (Calculados) ---
+// O jogador vai rolar esta quantidade de d6 na mesa.
+calc integer luta_pool(name="Luta Pilha") = corpo + luta_nivel;
+calc integer vigor_pool(name="Vigor Pilha") = corpo + vigor_nivel;
+calc integer atirar_pool(name="Atirar Pilha") = agilidade + atirar_nivel;
+calc integer acrobacia_pool(name="Acrobacia Pilha") = agilidade + acrobacia_nivel;
+calc integer furtividade_pool(name="Furtividade Pilha") = agilidade + furtividade_nivel;
+calc integer conduzir_pool(name="Conduzir Pilha") = agilidade + conduzir_nivel;
+calc integer percepcao_pool(name="Percepção Pilha") = mente + percepcao_nivel;
+calc integer saber_pool(name="Saber Pilha") = mente + saber_nivel;
+calc integer tecnologia_pool(name="Tecnologia Pilha") = mente + tecnologia_nivel;
+calc integer medicina_pool(name="Medicina Pilha") = mente + medicina_nivel;
+calc integer sobrevivencia_pool(name="Sobrevivência Pilha") = mente + sobrevivencia_nivel;
+calc integer persuasao_pool(name="Persuasão Pilha") = presenca + persuasao_nivel;
+calc integer enganacao_pool(name="Enganação Pilha") = presenca + enganacao_nivel;
+calc integer intimidacao_pool(name="Intimidação Pilha") = presenca + intimidacao_nivel;
+calc integer empatia_pool(name="Empatia Pilha") = presenca + empatia_nivel;
