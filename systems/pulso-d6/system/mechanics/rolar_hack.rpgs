@@ -1,0 +1,8 @@
+mechanic rolar_hack(
+  name = "Rolar Hack",
+  event_names = "rolar_hack"
+) = roll(
+  rolls = [
+    rollable(formulas = ["@{tecnologia_pool}d6"], text = "Hackeamento")
+  ]
+);

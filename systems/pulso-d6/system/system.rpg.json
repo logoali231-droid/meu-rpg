@@ -3,26 +3,10 @@
   "id": "pulso-d6",
   "name": "Pulso d6",
   "abbreviation": "P6",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "character_display_name": "name",
   "character_stats": "character_stats.rpgs",
   "character_indexed_stats": ["name"],
-  "enumerated_types": [
-    {
-      "id": "module_types",
-      "name": "Módulo Ativo",
-      "types": [
-        { "id": "none", "name": "Nenhum (Só Core)" },
-        { "id": "magic", "name": "Magia e Oculto" },
-        { "id": "cyber", "name": "Cibernética" },
-        { "id": "sanity", "name": "Sanidade / Horror" },
-        { "id": "bonds", "name": "Laços e Relações" },
-        { "id": "culinary", "name": "Culinária e Sustento" },
-        { "id": "base", "name": "Base e Crafting" },
-        { "id": "domain", "name": "Domínio e Organização" }
-      ]
-    }
-  ],
   "character_sheet_sections": [
     {
       "id": "identidade",
@@ -31,7 +15,16 @@
         { "type": "stat", "stat_id": "nome", "label": "Nome" },
         { "type": "stat", "stat_id": "conceito", "label": "Conceito" },
         { "type": "stat", "stat_id": "cenario", "label": "Cenário" },
-        { "type": "stat", "stat_id": "riqueza", "label": "Riqueza (0-4)" }
+        {
+          "type": "stat",
+          "stat_id": "riqueza_base",
+          "label": "Riqueza Base (0-4)"
+        },
+        {
+          "type": "menuButton",
+          "stat_id": "modulo_ativo",
+          "label": "Módulo Ativo"
+        }
       ]
     },
     {
@@ -181,8 +174,120 @@
           "label": "Vitalidade Atual"
         },
         { "type": "stat", "stat_id": "fadiga", "label": "Fadiga (0-3)" },
+        { "type": "stat", "stat_id": "estresse", "label": "Estresse (0-5)" }
+      ]
+    },
+    {
+      "id": "negocios",
+      "name": "Negócios e Diplomacia (Core)",
+      "components": [
+        {
+          "type": "stat",
+          "stat_id": "riqueza_temp",
+          "label": "Riqueza Temporária"
+        },
+        {
+          "type": "stat",
+          "stat_id": "alavancas",
+          "label": "Alavancas/Dossiês"
+        },
+        {
+          "type": "stat",
+          "stat_id": "contratos",
+          "label": "Contratos/Promessas"
+        }
+      ]
+    },
+    {
+      "id": "lacos_section",
+      "name": "Laços (Módulo)",
+      "is_visible": { "type": "stat", "stat_id": "tem_lacos" },
+      "components": [
+        { "type": "stat", "stat_id": "max_lacos", "label": "Máx. Laços" },
+        { "type": "stat", "stat_id": "pontos_laco", "label": "Pontos de Laço" }
+      ]
+    },
+    {
+      "id": "magia_section",
+      "name": "Magia (Módulo)",
+      "is_visible": { "type": "stat", "stat_id": "tem_magia" },
+      "components": [
+        {
+          "type": "stat",
+          "stat_id": "mistica_nivel",
+          "label": "Mística Nível"
+        },
+        { "type": "stat", "stat_id": "mistica_pool", "label": "Mística Pilha" },
+        {
+          "type": "button",
+          "label": "Rolar Mística",
+          "mechanic_id": "rolar_mistica"
+        }
+      ]
+    },
+    {
+      "id": "cyber_section",
+      "name": "Cibernética (Módulo)",
+      "is_visible": { "type": "stat", "stat_id": "tem_cyber" },
+      "components": [
+        {
+          "type": "stat",
+          "stat_id": "implantes_usados",
+          "label": "Implantes Usados"
+        },
+        {
+          "type": "stat",
+          "stat_id": "limite_implantes",
+          "label": "Limite de Implantes"
+        },
+        { "type": "button", "label": "Rolar Hack", "mechanic_id": "rolar_hack" }
+      ]
+    },
+    {
+      "id": "sanidade_section",
+      "name": "Sanidade (Módulo)",
+      "is_visible": { "type": "stat", "stat_id": "tem_sanidade" },
+      "components": [
         { "type": "stat", "stat_id": "estresse", "label": "Estresse (0-5)" },
-        { "type": "stat", "stat_id": "estabilizado", "label": "Estabilizado" }
+        {
+          "type": "button",
+          "label": "Rolar Vontade",
+          "mechanic_id": "rolar_vontade_estresse"
+        }
+      ]
+    },
+    {
+      "id": "culinaria_section",
+      "name": "Culinária (Módulo)",
+      "is_visible": { "type": "stat", "stat_id": "tem_culinaria" },
+      "components": [
+        {
+          "type": "stat",
+          "stat_id": "reserva_comida",
+          "label": "Reserva de Comida (0-4)"
+        }
+      ]
+    },
+    {
+      "id": "base_section",
+      "name": "Base (Módulo)",
+      "is_visible": { "type": "stat", "stat_id": "tem_base" },
+      "components": [
+        { "type": "stat", "stat_id": "nivel_base", "label": "Nível da Base" },
+        { "type": "stat", "stat_id": "bonus_base", "label": "Rolagem de Base" }
+      ]
+    },
+    {
+      "id": "dominio_section",
+      "name": "Domínio (Módulo)",
+      "is_visible": { "type": "stat", "stat_id": "tem_dominio" },
+      "components": [
+        { "type": "stat", "stat_id": "nivel_poder", "label": "Nível de Poder" },
+        {
+          "type": "stat",
+          "stat_id": "rolagem_dominio",
+          "label": "Rolagem de Domínio"
+        }
       ]
     },
     {
@@ -210,6 +315,22 @@
   "progression_systems": [],
   "mechanics": [],
   "resources": [],
+  "enumerated_types": [
+    {
+      "id": "module_types",
+      "name": "Módulo Ativo",
+      "types": [
+        { "id": "none", "name": "Nenhum (Só Core)" },
+        { "id": "magic", "name": "Magia e Oculto" },
+        { "id": "cyber", "name": "Cibernética" },
+        { "id": "sanity", "name": "Sanidade / Horror" },
+        { "id": "bonds", "name": "Laços e Relações" },
+        { "id": "culinary", "name": "Culinária e Sustento" },
+        { "id": "base", "name": "Base e Crafting" },
+        { "id": "domain", "name": "Domínio e Organização" }
+      ]
+    }
+  ],
   "dice": [{ "id": "d6", "name": "d6", "sides": 6 }],
   "combat_system": null,
   "live_session_enabled": false

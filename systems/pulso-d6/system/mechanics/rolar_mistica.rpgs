@@ -1,0 +1,8 @@
+mechanic rolar_mistica(
+  name = "Rolar Mística",
+  event_names = "rolar_mistica"
+) = roll(
+  rolls = [
+    rollable(formulas = ["@{mistica_pool}d6"], text = "Mística")
+  ]
+);

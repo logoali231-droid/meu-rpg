@@ -1,0 +1,8 @@
+mechanic rolar_vontade_estresse(
+  name = "Rolar Vontade",
+  event_names = "rolar_vontade_estresse"
+) = roll(
+  rolls = [
+    rollable(formulas = ["@{vontade}d6"], text = "Vontade")
+  ]
+);
