@@ -1,0 +1,8 @@
+mechanic rolar_medicina(
+  name = "Rolar Medicina",
+  event_names = "rolar_medicina"
+) = roll(
+  rolls = [
+    rollable(formulas = ["@{medicina_pool}d6"], text = "Medicina")
+  ]
+);

@@ -1,0 +1,8 @@
+mechanic rolar_acrobacia(
+  name = "Rolar Acrobacia",
+  event_names = "rolar_acrobacia"
+) = roll(
+  rolls = [
+    rollable(formulas = ["@{acrobacia_pool}d6"], text = "Acrobacia")
+  ]
+);

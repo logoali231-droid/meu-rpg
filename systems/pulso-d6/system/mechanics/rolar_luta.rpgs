@@ -1,0 +1,8 @@
+mechanic rolar_luta(
+  name = "Rolar Luta",
+  event_names = "rolar_luta"
+) = roll(
+  rolls = [
+    rollable(formulas = ["@{luta_pool}d6"], text = "Luta")
+  ]
+);

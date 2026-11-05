@@ -1,0 +1,119 @@
+{
+  "type": "RPGSystem",
+  "id": "pulso-d6",
+  "name": "Pulso d6",
+  "abbreviation": "P6",
+  "version": "1.0.0",
+  "character_display_name": "name",
+  "character_stats": "character_stats.rpgs",
+  "character_indexed_stats": ["name"],
+    "character_sheet_sections": [
+    {
+      "id": "identidade",
+      "name": "Identidade",
+      "components": [
+        { "type": "stat", "stat_id": "nome", "label": "Nome" },
+        { "type": "stat", "stat_id": "conceito", "label": "Conceito" },
+        { "type": "stat", "stat_id": "cenario", "label": "Cenário" },
+        { "type": "stat", "stat_id": "riqueza", "label": "Riqueza (0-4)" }
+      ]
+    },
+    {
+      "id": "atributos",
+      "name": "Atributos",
+      "components": [
+        { "type": "stat", "stat_id": "corpo", "label": "Corpo" },
+        { "type": "stat", "stat_id": "agilidade", "label": "Agilidade" },
+        { "type": "stat", "stat_id": "mente", "label": "Mente" },
+        { "type": "stat", "stat_id": "presenca", "label": "Presença" }
+      ]
+    },
+    {
+      "id": "derivados",
+      "name": "Valores Derivados",
+      "components": [
+        { "type": "stat", "stat_id": "vitalidade_max", "label": "Vitalidade Máx." },
+        { "type": "stat", "stat_id": "iniciativa", "label": "Iniciativa" },
+        { "type": "stat", "stat_id": "defesa", "label": "Defesa" },
+        { "type": "stat", "stat_id": "vontade", "label": "Vontade" },
+        { "type": "stat", "stat_id": "espacos", "label": "Espaços" }
+      ]
+    },
+    {
+      "id": "pericias",
+      "name": "Perícias",
+      "components": [
+        { "type": "stat", "stat_id": "luta_nivel", "label": "Luta" },
+        { "type": "button", "label": "Rolar Luta", "mechanic_id": "rolar_luta" },
+        { "type": "stat", "stat_id": "vigor_nivel", "label": "Vigor" },
+        { "type": "button", "label": "Rolar Vigor", "mechanic_id": "rolar_vigor" },
+        { "type": "stat", "stat_id": "atirar_nivel", "label": "Atirar" },
+        { "type": "button", "label": "Rolar Atirar", "mechanic_id": "rolar_atirar" },
+        { "type": "stat", "stat_id": "acrobacia_nivel", "label": "Acrobacia" },
+        { "type": "button", "label": "Rolar Acrobacia", "mechanic_id": "rolar_acrobacia" },
+        { "type": "stat", "stat_id": "furtividade_nivel", "label": "Furtividade" },
+        { "type": "button", "label": "Rolar Furtividade", "mechanic_id": "rolar_furtividade" },
+        { "type": "stat", "stat_id": "conduzir_nivel", "label": "Conduzir" },
+        { "type": "button", "label": "Rolar Conduzir", "mechanic_id": "rolar_conduzir" },
+        { "type": "stat", "stat_id": "percepcao_nivel", "label": "Percepção" },
+        { "type": "button", "label": "Rolar Percepção", "mechanic_id": "rolar_percepcao" },
+        { "type": "stat", "stat_id": "saber_nivel", "label": "Saber" },
+        { "type": "button", "label": "Rolar Saber", "mechanic_id": "rolar_saber" },
+        { "type": "stat", "stat_id": "tecnologia_nivel", "label": "Tecnologia" },
+        { "type": "button", "label": "Rolar Tecnologia", "mechanic_id": "rolar_tecnologia" },
+        { "type": "stat", "stat_id": "medicina_nivel", "label": "Medicina" },
+        { "type": "button", "label": "Rolar Medicina", "mechanic_id": "rolar_medicina" },
+        { "type": "stat", "stat_id": "sobrevivencia_nivel", "label": "Sobrevivência" },
+        { "type": "button", "label": "Rolar Sobrevivência", "mechanic_id": "rolar_sobrevivencia" },
+        { "type": "stat", "stat_id": "persuasao_nivel", "label": "Persuasão" },
+        { "type": "button", "label": "Rolar Persuasão", "mechanic_id": "rolar_persuasao" },
+        { "type": "stat", "stat_id": "enganacao_nivel", "label": "Enganação" },
+        { "type": "button", "label": "Rolar Enganação", "mechanic_id": "rolar_enganacao" },
+        { "type": "stat", "stat_id": "intimidacao_nivel", "label": "Intimidação" },
+        { "type": "button", "label": "Rolar Intimidação", "mechanic_id": "rolar_intimidacao" },
+        { "type": "stat", "stat_id": "empatia_nivel", "label": "Empatia" },
+        { "type": "button", "label": "Rolar Empatia", "mechanic_id": "rolar_empatia" }
+      ]
+    },
+    {
+      "id": "vitalidade",
+      "name": "Vitalidade e Estados",
+      "components": [
+        { "type": "stat", "stat_id": "vitalidade_atual", "label": "Vitalidade Atual" },
+        { "type": "stat", "stat_id": "fadiga", "label": "Fadiga (0-3)" },
+        { "type": "stat", "stat_id": "estresse", "label": "Estresse (0-5)" },
+        { "type": "stat", "stat_id": "estabilizado", "label": "Estabilizado" }
+      ]
+    },
+    {
+      "id": "equipamento",
+      "name": "Equipamento e Traços",
+      "components": [
+        { "type": "stat", "stat_id": "arma_nome", "label": "Arma" },
+        { "type": "stat", "stat_id": "arma_dano", "label": "Dano da Arma" },
+        { "type": "stat", "stat_id": "armadura_nome", "label": "Armadura" },
+        { "type": "stat", "stat_id": "armadura_reducao", "label": "Redução" },
+        { "type": "stat", "stat_id": "vantagens", "label": "Vantagens" },
+        { "type": "stat", "stat_id": "desvantagens", "label": "Desvantagens" }
+      ]
+    },
+    {
+      "id": "progresso",
+      "name": "Progresso e Notas",
+      "components": [
+        { "type": "stat", "stat_id": "xp", "label": "XP" },
+        { "type": "stat", "stat_id": "sessoes", "label": "Sessões" },
+        { "type": "stat", "stat_id": "notas", "label": "Notas" }
+      ]
+    }
+  ],
+  "progression_systems": [],
+  "mechanics": [],
+  "resources": [],
+  "enumerated_types": [],
+  "dice": [
+    { "id": "d6", "name": "d6", "sides": 6 }
+  ],
+  "combat_system": null,
+  "live_session_enabled": false
+}

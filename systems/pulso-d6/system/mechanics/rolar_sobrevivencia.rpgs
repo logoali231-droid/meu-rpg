@@ -1,0 +1,8 @@
+mechanic rolar_sobrevivencia(
+  name = "Rolar Sobrevivência",
+  event_names = "rolar_sobrevivencia"
+) = roll(
+  rolls = [
+    rollable(formulas = ["@{sobrevivencia_pool}d6"], text = "Sobrevivência")
+  ]
+);

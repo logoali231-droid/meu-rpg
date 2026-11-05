@@ -1,0 +1,1920 @@
+{
+  "type": "RPGSystem",
+  "id": "pulso-d6",
+  "name": "Pulso d6",
+  "abbreviation": "P6",
+  "version": "1.0.0",
+  "character_display_name": "name",
+  "character_stats": [
+    {
+      "id": "nome",
+      "type": "base",
+      "value_type": "string",
+      "default_value": "",
+      "name": "Nome"
+    },
+    {
+      "id": "conceito",
+      "type": "base",
+      "value_type": "string",
+      "default_value": "",
+      "name": "Conceito"
+    },
+    {
+      "id": "corpo",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 2,
+      "name": "Corpo"
+    },
+    {
+      "id": "agilidade",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 2,
+      "name": "Agilidade"
+    },
+    {
+      "id": "mente",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 2,
+      "name": "Mente"
+    },
+    {
+      "id": "presenca",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 2,
+      "name": "Presença"
+    },
+    {
+      "id": "vitalidade_max",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "constant",
+              "value": 5,
+              "value_type": "integer"
+            },
+            {
+              "type": "multiply",
+              "components": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "stat",
+                    "stat": "corpo"
+                  },
+                  {
+                    "type": "constant",
+                    "value": 2,
+                    "value_type": "integer"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "name": "Vitalidade Máx"
+    },
+    {
+      "id": "iniciativa",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "agilidade"
+            },
+            {
+              "type": "stat",
+              "stat": "mente"
+            }
+          ]
+        }
+      },
+      "name": "Iniciativa"
+    },
+    {
+      "id": "defesa",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "subtract",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "add",
+              "components": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "stat",
+                    "stat": "agilidade"
+                  },
+                  {
+                    "type": "constant",
+                    "value": 1,
+                    "value_type": "integer"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "constant",
+              "value": 1,
+              "value_type": "integer"
+            }
+          ]
+        }
+      },
+      "name": "Defesa"
+    },
+    {
+      "id": "vontade",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "presenca"
+            },
+            {
+              "type": "stat",
+              "stat": "mente"
+            }
+          ]
+        }
+      },
+      "name": "Vontade"
+    },
+    {
+      "id": "espacos",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "corpo"
+            },
+            {
+              "type": "constant",
+              "value": 3,
+              "value_type": "integer"
+            }
+          ]
+        }
+      },
+      "name": "Espaços"
+    },
+    {
+      "id": "vitalidade_atual",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 10,
+      "name": "Vitalidade Atual"
+    },
+    {
+      "id": "fadiga",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Fadiga (0-3)"
+    },
+    {
+      "id": "estresse",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Estresse (0-5)"
+    },
+    {
+      "id": "riqueza_base",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 2,
+      "name": "Riqueza Base (0-4)"
+    },
+    {
+      "id": "riqueza_temp",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Riqueza Temporária"
+    },
+    {
+      "id": "alavancas",
+      "type": "base",
+      "value_type": "string",
+      "default_value": "",
+      "name": "Alavancas/Dossiês"
+    },
+    {
+      "id": "contratos",
+      "type": "base",
+      "value_type": "string",
+      "default_value": "",
+      "name": "Contratos/Promessas"
+    },
+    {
+      "id": "max_lacos",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "presenca"
+            },
+            {
+              "type": "constant",
+              "value": 1,
+              "value_type": "integer"
+            }
+          ]
+        }
+      },
+      "name": "Máx. Laços"
+    },
+    {
+      "id": "pontos_laco",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 3,
+      "name": "Pontos de Laço"
+    },
+    {
+      "id": "modulo_ativo",
+      "type": "base",
+      "value_type": "string",
+      "default_value": "none",
+      "name": "Módulo Ativo"
+    },
+    {
+      "id": "tem_magia",
+      "type": "calculated",
+      "value_type": "bool",
+      "components": {
+        "type": "equals",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "modulo_ativo"
+            },
+            {
+              "type": "constant",
+              "value": "magic",
+              "value_type": "string"
+            }
+          ]
+        }
+      },
+      "name": "Tem Magia?"
+    },
+    {
+      "id": "tem_cyber",
+      "type": "calculated",
+      "value_type": "bool",
+      "components": {
+        "type": "equals",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "modulo_ativo"
+            },
+            {
+              "type": "constant",
+              "value": "cyber",
+              "value_type": "string"
+            }
+          ]
+        }
+      },
+      "name": "Tem Cyber?"
+    },
+    {
+      "id": "tem_sanidade",
+      "type": "calculated",
+      "value_type": "bool",
+      "components": {
+        "type": "equals",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "modulo_ativo"
+            },
+            {
+              "type": "constant",
+              "value": "sanity",
+              "value_type": "string"
+            }
+          ]
+        }
+      },
+      "name": "Tem Sanidade?"
+    },
+    {
+      "id": "tem_base",
+      "type": "calculated",
+      "value_type": "bool",
+      "components": {
+        "type": "equals",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "modulo_ativo"
+            },
+            {
+              "type": "constant",
+              "value": "base",
+              "value_type": "string"
+            }
+          ]
+        }
+      },
+      "name": "Tem Base?"
+    },
+    {
+      "id": "tem_dominio",
+      "type": "calculated",
+      "value_type": "bool",
+      "components": {
+        "type": "equals",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "modulo_ativo"
+            },
+            {
+              "type": "constant",
+              "value": "domain",
+              "value_type": "string"
+            }
+          ]
+        }
+      },
+      "name": "Tem Dominio?"
+    },
+    {
+      "id": "tem_culinaria",
+      "type": "calculated",
+      "value_type": "bool",
+      "components": {
+        "type": "equals",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "modulo_ativo"
+            },
+            {
+              "type": "constant",
+              "value": "culinary",
+              "value_type": "string"
+            }
+          ]
+        }
+      },
+      "name": "Tem Culinaria?"
+    },
+    {
+      "id": "mistica_nivel",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Mística Nível"
+    },
+    {
+      "id": "mistica_pool",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "when",
+        "clauses": [
+          {
+            "condition": {
+              "type": "stat",
+              "stat": "tem_magia"
+            },
+            "components": {
+              "type": "add",
+              "components": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "stat",
+                    "stat": "mente"
+                  },
+                  {
+                    "type": "stat",
+                    "stat": "mistica_nivel"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "condition": {
+              "type": "constant",
+              "value_type": "bool",
+              "value": true
+            },
+            "components": {
+              "type": "constant",
+              "value": 0,
+              "value_type": "integer"
+            }
+          }
+        ]
+      },
+      "name": "Mística Pilha"
+    },
+    {
+      "id": "implantes_usados",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Implantes Usados"
+    },
+    {
+      "id": "limite_implantes",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "when",
+        "clauses": [
+          {
+            "condition": {
+              "type": "stat",
+              "stat": "tem_cyber"
+            },
+            "components": {
+              "type": "subtract",
+              "components": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "stat",
+                    "stat": "corpo"
+                  },
+                  {
+                    "type": "constant",
+                    "value": 1,
+                    "value_type": "integer"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "condition": {
+              "type": "constant",
+              "value_type": "bool",
+              "value": true
+            },
+            "components": {
+              "type": "constant",
+              "value": 0,
+              "value_type": "integer"
+            }
+          }
+        ]
+      },
+      "name": "Limite de Implantes"
+    },
+    {
+      "id": "nivel_base",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Nível da Base"
+    },
+    {
+      "id": "bonus_base",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "when",
+        "clauses": [
+          {
+            "condition": {
+              "type": "stat",
+              "stat": "tem_base"
+            },
+            "components": {
+              "type": "add",
+              "components": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "constant",
+                    "value": 3,
+                    "value_type": "integer"
+                  },
+                  {
+                    "type": "stat",
+                    "stat": "nivel_base"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "condition": {
+              "type": "constant",
+              "value_type": "bool",
+              "value": true
+            },
+            "components": {
+              "type": "constant",
+              "value": 0,
+              "value_type": "integer"
+            }
+          }
+        ]
+      },
+      "name": "Rolagem de Base"
+    },
+    {
+      "id": "nivel_poder",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Nível de Poder"
+    },
+    {
+      "id": "rolagem_dominio",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "when",
+        "clauses": [
+          {
+            "condition": {
+              "type": "stat",
+              "stat": "tem_dominio"
+            },
+            "components": {
+              "type": "stat",
+              "stat": "nivel_poder"
+            }
+          },
+          {
+            "condition": {
+              "type": "constant",
+              "value_type": "bool",
+              "value": true
+            },
+            "components": {
+              "type": "constant",
+              "value": 0,
+              "value_type": "integer"
+            }
+          }
+        ]
+      },
+      "name": "Rolagem de Domínio"
+    },
+    {
+      "id": "reserva_comida",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 4,
+      "name": "Reserva de Comida (0-4)"
+    },
+    {
+      "id": "penalidade_fome",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "when",
+        "clauses": [
+          {
+            "condition": {
+              "type": "and",
+              "components": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "stat",
+                    "stat": "tem_culinaria"
+                  },
+                  {
+                    "type": "equals",
+                    "components": {
+                      "type": "list",
+                      "components": [
+                        {
+                          "type": "stat",
+                          "stat": "reserva_comida"
+                        },
+                        {
+                          "type": "constant",
+                          "value": 0,
+                          "value_type": "integer"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            "components": {
+              "type": "constant",
+              "value": -1,
+              "value_type": "integer"
+            }
+          },
+          {
+            "condition": {
+              "type": "constant",
+              "value_type": "bool",
+              "value": true
+            },
+            "components": {
+              "type": "constant",
+              "value": 0,
+              "value_type": "integer"
+            }
+          }
+        ]
+      },
+      "name": "Penalidade de Fome"
+    },
+    {
+      "id": "luta_nivel",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Luta Nível"
+    },
+    {
+      "id": "luta_pool",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "corpo"
+            },
+            {
+              "type": "stat",
+              "stat": "luta_nivel"
+            }
+          ]
+        }
+      },
+      "name": "Luta Pilha"
+    },
+    {
+      "id": "vigor_nivel",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Vigor Nível"
+    },
+    {
+      "id": "vigor_pool",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "corpo"
+            },
+            {
+              "type": "stat",
+              "stat": "vigor_nivel"
+            }
+          ]
+        }
+      },
+      "name": "Vigor Pilha"
+    },
+    {
+      "id": "atirar_nivel",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Atirar Nível"
+    },
+    {
+      "id": "atirar_pool",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "agilidade"
+            },
+            {
+              "type": "stat",
+              "stat": "atirar_nivel"
+            }
+          ]
+        }
+      },
+      "name": "Atirar Pilha"
+    },
+    {
+      "id": "acrobacia_nivel",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Acrobacia Nível"
+    },
+    {
+      "id": "acrobacia_pool",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "agilidade"
+            },
+            {
+              "type": "stat",
+              "stat": "acrobacia_nivel"
+            }
+          ]
+        }
+      },
+      "name": "Acrobacia Pilha"
+    },
+    {
+      "id": "furtividade_nivel",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Furtividade Nível"
+    },
+    {
+      "id": "furtividade_pool",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "agilidade"
+            },
+            {
+              "type": "stat",
+              "stat": "furtividade_nivel"
+            }
+          ]
+        }
+      },
+      "name": "Furtividade Pilha"
+    },
+    {
+      "id": "conduzir_nivel",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Conduzir Nível"
+    },
+    {
+      "id": "conduzir_pool",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "agilidade"
+            },
+            {
+              "type": "stat",
+              "stat": "conduzir_nivel"
+            }
+          ]
+        }
+      },
+      "name": "Conduzir Pilha"
+    },
+    {
+      "id": "percepcao_nivel",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Percepção Nível"
+    },
+    {
+      "id": "percepcao_pool",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "mente"
+            },
+            {
+              "type": "stat",
+              "stat": "percepcao_nivel"
+            }
+          ]
+        }
+      },
+      "name": "Percepção Pilha"
+    },
+    {
+      "id": "saber_nivel",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Saber Nível"
+    },
+    {
+      "id": "saber_pool",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "mente"
+            },
+            {
+              "type": "stat",
+              "stat": "saber_nivel"
+            }
+          ]
+        }
+      },
+      "name": "Saber Pilha"
+    },
+    {
+      "id": "tecnologia_nivel",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Tecnologia Nível"
+    },
+    {
+      "id": "tecnologia_pool",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "mente"
+            },
+            {
+              "type": "stat",
+              "stat": "tecnologia_nivel"
+            }
+          ]
+        }
+      },
+      "name": "Tecnologia Pilha"
+    },
+    {
+      "id": "medicina_nivel",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Medicina Nível"
+    },
+    {
+      "id": "medicina_pool",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "mente"
+            },
+            {
+              "type": "stat",
+              "stat": "medicina_nivel"
+            }
+          ]
+        }
+      },
+      "name": "Medicina Pilha"
+    },
+    {
+      "id": "sobrevivencia_nivel",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Sobrevivência Nível"
+    },
+    {
+      "id": "sobrevivencia_pool",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "mente"
+            },
+            {
+              "type": "stat",
+              "stat": "sobrevivencia_nivel"
+            }
+          ]
+        }
+      },
+      "name": "Sobrevivência Pilha"
+    },
+    {
+      "id": "persuasao_nivel",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Persuasão Nível"
+    },
+    {
+      "id": "persuasao_pool",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "presenca"
+            },
+            {
+              "type": "stat",
+              "stat": "persuasao_nivel"
+            }
+          ]
+        }
+      },
+      "name": "Persuasão Pilha"
+    },
+    {
+      "id": "enganacao_nivel",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Enganação Nível"
+    },
+    {
+      "id": "enganacao_pool",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "presenca"
+            },
+            {
+              "type": "stat",
+              "stat": "enganacao_nivel"
+            }
+          ]
+        }
+      },
+      "name": "Enganação Pilha"
+    },
+    {
+      "id": "intimidacao_nivel",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Intimidação Nível"
+    },
+    {
+      "id": "intimidacao_pool",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "presenca"
+            },
+            {
+              "type": "stat",
+              "stat": "intimidacao_nivel"
+            }
+          ]
+        }
+      },
+      "name": "Intimidação Pilha"
+    },
+    {
+      "id": "empatia_nivel",
+      "type": "base",
+      "value_type": "integer",
+      "default_value": 0,
+      "name": "Empatia Nível"
+    },
+    {
+      "id": "empatia_pool",
+      "type": "calculated",
+      "value_type": "integer",
+      "components": {
+        "type": "add",
+        "components": {
+          "type": "list",
+          "components": [
+            {
+              "type": "stat",
+              "stat": "presenca"
+            },
+            {
+              "type": "stat",
+              "stat": "empatia_nivel"
+            }
+          ]
+        }
+      },
+      "name": "Empatia Pilha"
+    }
+  ],
+  "character_indexed_stats": [
+    "name"
+  ],
+  "character_sheet_sections": [
+    {
+      "id": "identidade",
+      "name": "Identidade",
+      "components": [
+        {
+          "type": "stat",
+          "stat_id": "nome",
+          "label": "Nome"
+        },
+        {
+          "type": "stat",
+          "stat_id": "conceito",
+          "label": "Conceito"
+        },
+        {
+          "type": "stat",
+          "stat_id": "cenario",
+          "label": "Cenário"
+        },
+        {
+          "type": "stat",
+          "stat_id": "riqueza",
+          "label": "Riqueza (0-4)"
+        }
+      ]
+    },
+    {
+      "id": "atributos",
+      "name": "Atributos",
+      "components": [
+        {
+          "type": "stat",
+          "stat_id": "corpo",
+          "label": "Corpo"
+        },
+        {
+          "type": "stat",
+          "stat_id": "agilidade",
+          "label": "Agilidade"
+        },
+        {
+          "type": "stat",
+          "stat_id": "mente",
+          "label": "Mente"
+        },
+        {
+          "type": "stat",
+          "stat_id": "presenca",
+          "label": "Presença"
+        }
+      ]
+    },
+    {
+      "id": "derivados",
+      "name": "Valores Derivados",
+      "components": [
+        {
+          "type": "stat",
+          "stat_id": "vitalidade_max",
+          "label": "Vitalidade Máx."
+        },
+        {
+          "type": "stat",
+          "stat_id": "iniciativa",
+          "label": "Iniciativa"
+        },
+        {
+          "type": "stat",
+          "stat_id": "defesa",
+          "label": "Defesa"
+        },
+        {
+          "type": "stat",
+          "stat_id": "vontade",
+          "label": "Vontade"
+        },
+        {
+          "type": "stat",
+          "stat_id": "espacos",
+          "label": "Espaços"
+        }
+      ]
+    },
+    {
+      "id": "pericias",
+      "name": "Perícias",
+      "components": [
+        {
+          "type": "stat",
+          "stat_id": "luta_nivel",
+          "label": "Luta"
+        },
+        {
+          "type": "button",
+          "label": "Rolar Luta",
+          "mechanic_id": "rolar_luta"
+        },
+        {
+          "type": "stat",
+          "stat_id": "vigor_nivel",
+          "label": "Vigor"
+        },
+        {
+          "type": "button",
+          "label": "Rolar Vigor",
+          "mechanic_id": "rolar_vigor"
+        },
+        {
+          "type": "stat",
+          "stat_id": "atirar_nivel",
+          "label": "Atirar"
+        },
+        {
+          "type": "button",
+          "label": "Rolar Atirar",
+          "mechanic_id": "rolar_atirar"
+        },
+        {
+          "type": "stat",
+          "stat_id": "acrobacia_nivel",
+          "label": "Acrobacia"
+        },
+        {
+          "type": "button",
+          "label": "Rolar Acrobacia",
+          "mechanic_id": "rolar_acrobacia"
+        },
+        {
+          "type": "stat",
+          "stat_id": "furtividade_nivel",
+          "label": "Furtividade"
+        },
+        {
+          "type": "button",
+          "label": "Rolar Furtividade",
+          "mechanic_id": "rolar_furtividade"
+        },
+        {
+          "type": "stat",
+          "stat_id": "conduzir_nivel",
+          "label": "Conduzir"
+        },
+        {
+          "type": "button",
+          "label": "Rolar Conduzir",
+          "mechanic_id": "rolar_conduzir"
+        },
+        {
+          "type": "stat",
+          "stat_id": "percepcao_nivel",
+          "label": "Percepção"
+        },
+        {
+          "type": "button",
+          "label": "Rolar Percepção",
+          "mechanic_id": "rolar_percepcao"
+        },
+        {
+          "type": "stat",
+          "stat_id": "saber_nivel",
+          "label": "Saber"
+        },
+        {
+          "type": "button",
+          "label": "Rolar Saber",
+          "mechanic_id": "rolar_saber"
+        },
+        {
+          "type": "stat",
+          "stat_id": "tecnologia_nivel",
+          "label": "Tecnologia"
+        },
+        {
+          "type": "button",
+          "label": "Rolar Tecnologia",
+          "mechanic_id": "rolar_tecnologia"
+        },
+        {
+          "type": "stat",
+          "stat_id": "medicina_nivel",
+          "label": "Medicina"
+        },
+        {
+          "type": "button",
+          "label": "Rolar Medicina",
+          "mechanic_id": "rolar_medicina"
+        },
+        {
+          "type": "stat",
+          "stat_id": "sobrevivencia_nivel",
+          "label": "Sobrevivência"
+        },
+        {
+          "type": "button",
+          "label": "Rolar Sobrevivência",
+          "mechanic_id": "rolar_sobrevivencia"
+        },
+        {
+          "type": "stat",
+          "stat_id": "persuasao_nivel",
+          "label": "Persuasão"
+        },
+        {
+          "type": "button",
+          "label": "Rolar Persuasão",
+          "mechanic_id": "rolar_persuasao"
+        },
+        {
+          "type": "stat",
+          "stat_id": "enganacao_nivel",
+          "label": "Enganação"
+        },
+        {
+          "type": "button",
+          "label": "Rolar Enganação",
+          "mechanic_id": "rolar_enganacao"
+        },
+        {
+          "type": "stat",
+          "stat_id": "intimidacao_nivel",
+          "label": "Intimidação"
+        },
+        {
+          "type": "button",
+          "label": "Rolar Intimidação",
+          "mechanic_id": "rolar_intimidacao"
+        },
+        {
+          "type": "stat",
+          "stat_id": "empatia_nivel",
+          "label": "Empatia"
+        },
+        {
+          "type": "button",
+          "label": "Rolar Empatia",
+          "mechanic_id": "rolar_empatia"
+        }
+      ]
+    },
+    {
+      "id": "vitalidade",
+      "name": "Vitalidade e Estados",
+      "components": [
+        {
+          "type": "stat",
+          "stat_id": "vitalidade_atual",
+          "label": "Vitalidade Atual"
+        },
+        {
+          "type": "stat",
+          "stat_id": "fadiga",
+          "label": "Fadiga (0-3)"
+        },
+        {
+          "type": "stat",
+          "stat_id": "estresse",
+          "label": "Estresse (0-5)"
+        },
+        {
+          "type": "stat",
+          "stat_id": "estabilizado",
+          "label": "Estabilizado"
+        }
+      ]
+    },
+    {
+      "id": "equipamento",
+      "name": "Equipamento e Traços",
+      "components": [
+        {
+          "type": "stat",
+          "stat_id": "arma_nome",
+          "label": "Arma"
+        },
+        {
+          "type": "stat",
+          "stat_id": "arma_dano",
+          "label": "Dano da Arma"
+        },
+        {
+          "type": "stat",
+          "stat_id": "armadura_nome",
+          "label": "Armadura"
+        },
+        {
+          "type": "stat",
+          "stat_id": "armadura_reducao",
+          "label": "Redução"
+        },
+        {
+          "type": "stat",
+          "stat_id": "vantagens",
+          "label": "Vantagens"
+        },
+        {
+          "type": "stat",
+          "stat_id": "desvantagens",
+          "label": "Desvantagens"
+        }
+      ]
+    },
+    {
+      "id": "progresso",
+      "name": "Progresso e Notas",
+      "components": [
+        {
+          "type": "stat",
+          "stat_id": "xp",
+          "label": "XP"
+        },
+        {
+          "type": "stat",
+          "stat_id": "sessoes",
+          "label": "Sessões"
+        },
+        {
+          "type": "stat",
+          "stat_id": "notas",
+          "label": "Notas"
+        }
+      ]
+    }
+  ],
+  "progression_systems": [],
+  "mechanics": [
+    {
+      "id": "rolar_acrobacia",
+      "effects": {
+        "type": "roll",
+        "rolls": {
+          "type": "list",
+          "components": [
+            {
+              "type": "rollable",
+              "formulas": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "constant",
+                    "value": "@{acrobacia_pool}d6",
+                    "value_type": "string"
+                  }
+                ]
+              },
+              "text": {
+                "type": "constant",
+                "value": "Acrobacia",
+                "value_type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "name": "Rolar Acrobacia",
+      "event_names": "rolar_acrobacia"
+    },
+    {
+      "id": "rolar_atirar",
+      "effects": {
+        "type": "roll",
+        "rolls": {
+          "type": "list",
+          "components": [
+            {
+              "type": "rollable",
+              "formulas": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "constant",
+                    "value": "@{atirar_pool}d6",
+                    "value_type": "string"
+                  }
+                ]
+              },
+              "text": {
+                "type": "constant",
+                "value": "Atirar",
+                "value_type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "name": "Rolar Atirar",
+      "event_names": "rolar_atirar"
+    },
+    {
+      "id": "rolar_conduzir",
+      "effects": {
+        "type": "roll",
+        "rolls": {
+          "type": "list",
+          "components": [
+            {
+              "type": "rollable",
+              "formulas": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "constant",
+                    "value": "@{conduzir_pool}d6",
+                    "value_type": "string"
+                  }
+                ]
+              },
+              "text": {
+                "type": "constant",
+                "value": "Conduzir",
+                "value_type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "name": "Rolar Conduzir",
+      "event_names": "rolar_conduzir"
+    },
+    {
+      "id": "rolar_empatia",
+      "effects": {
+        "type": "roll",
+        "rolls": {
+          "type": "list",
+          "components": [
+            {
+              "type": "rollable",
+              "formulas": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "constant",
+                    "value": "@{empatia_pool}d6",
+                    "value_type": "string"
+                  }
+                ]
+              },
+              "text": {
+                "type": "constant",
+                "value": "Empatia",
+                "value_type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "name": "Rolar Empatia",
+      "event_names": "rolar_empatia"
+    },
+    {
+      "id": "rolar_enganacao",
+      "effects": {
+        "type": "roll",
+        "rolls": {
+          "type": "list",
+          "components": [
+            {
+              "type": "rollable",
+              "formulas": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "constant",
+                    "value": "@{enganacao_pool}d6",
+                    "value_type": "string"
+                  }
+                ]
+              },
+              "text": {
+                "type": "constant",
+                "value": "Enganação",
+                "value_type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "name": "Rolar Enganação",
+      "event_names": "rolar_enganacao"
+    },
+    {
+      "id": "rolar_furtividade",
+      "effects": {
+        "type": "roll",
+        "rolls": {
+          "type": "list",
+          "components": [
+            {
+              "type": "rollable",
+              "formulas": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "constant",
+                    "value": "@{furtividade_pool}d6",
+                    "value_type": "string"
+                  }
+                ]
+              },
+              "text": {
+                "type": "constant",
+                "value": "Furtividade",
+                "value_type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "name": "Rolar Furtividade",
+      "event_names": "rolar_furtividade"
+    },
+    {
+      "id": "rolar_intimidacao",
+      "effects": {
+        "type": "roll",
+        "rolls": {
+          "type": "list",
+          "components": [
+            {
+              "type": "rollable",
+              "formulas": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "constant",
+                    "value": "@{intimidacao_pool}d6",
+                    "value_type": "string"
+                  }
+                ]
+              },
+              "text": {
+                "type": "constant",
+                "value": "Intimidação",
+                "value_type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "name": "Rolar Intimidação",
+      "event_names": "rolar_intimidacao"
+    },
+    {
+      "id": "rolar_luta",
+      "effects": {
+        "type": "roll",
+        "rolls": {
+          "type": "list",
+          "components": [
+            {
+              "type": "rollable",
+              "formulas": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "constant",
+                    "value": "@{luta_pool}d6",
+                    "value_type": "string"
+                  }
+                ]
+              },
+              "text": {
+                "type": "constant",
+                "value": "Luta",
+                "value_type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "name": "Rolar Luta",
+      "event_names": "rolar_luta"
+    },
+    {
+      "id": "rolar_medicina",
+      "effects": {
+        "type": "roll",
+        "rolls": {
+          "type": "list",
+          "components": [
+            {
+              "type": "rollable",
+              "formulas": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "constant",
+                    "value": "@{medicina_pool}d6",
+                    "value_type": "string"
+                  }
+                ]
+              },
+              "text": {
+                "type": "constant",
+                "value": "Medicina",
+                "value_type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "name": "Rolar Medicina",
+      "event_names": "rolar_medicina"
+    },
+    {
+      "id": "rolar_percepcao",
+      "effects": {
+        "type": "roll",
+        "rolls": {
+          "type": "list",
+          "components": [
+            {
+              "type": "rollable",
+              "formulas": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "constant",
+                    "value": "@{percepcao_pool}d6",
+                    "value_type": "string"
+                  }
+                ]
+              },
+              "text": {
+                "type": "constant",
+                "value": "Percepção",
+                "value_type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "name": "Rolar Percepção",
+      "event_names": "rolar_percepcao"
+    },
+    {
+      "id": "rolar_persuasao",
+      "effects": {
+        "type": "roll",
+        "rolls": {
+          "type": "list",
+          "components": [
+            {
+              "type": "rollable",
+              "formulas": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "constant",
+                    "value": "@{persuasao_pool}d6",
+                    "value_type": "string"
+                  }
+                ]
+              },
+              "text": {
+                "type": "constant",
+                "value": "Persuasão",
+                "value_type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "name": "Rolar Persuasão",
+      "event_names": "rolar_persuasao"
+    },
+    {
+      "id": "rolar_saber",
+      "effects": {
+        "type": "roll",
+        "rolls": {
+          "type": "list",
+          "components": [
+            {
+              "type": "rollable",
+              "formulas": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "constant",
+                    "value": "@{saber_pool}d6",
+                    "value_type": "string"
+                  }
+                ]
+              },
+              "text": {
+                "type": "constant",
+                "value": "Saber",
+                "value_type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "name": "Rolar Saber",
+      "event_names": "rolar_saber"
+    },
+    {
+      "id": "rolar_sobrevivencia",
+      "effects": {
+        "type": "roll",
+        "rolls": {
+          "type": "list",
+          "components": [
+            {
+              "type": "rollable",
+              "formulas": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "constant",
+                    "value": "@{sobrevivencia_pool}d6",
+                    "value_type": "string"
+                  }
+                ]
+              },
+              "text": {
+                "type": "constant",
+                "value": "Sobrevivência",
+                "value_type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "name": "Rolar Sobrevivência",
+      "event_names": "rolar_sobrevivencia"
+    },
+    {
+      "id": "rolar_tecnologia",
+      "effects": {
+        "type": "roll",
+        "rolls": {
+          "type": "list",
+          "components": [
+            {
+              "type": "rollable",
+              "formulas": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "constant",
+                    "value": "@{tecnologia_pool}d6",
+                    "value_type": "string"
+                  }
+                ]
+              },
+              "text": {
+                "type": "constant",
+                "value": "Tecnologia",
+                "value_type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "name": "Rolar Tecnologia",
+      "event_names": "rolar_tecnologia"
+    },
+    {
+      "id": "rolar_vigor",
+      "effects": {
+        "type": "roll",
+        "rolls": {
+          "type": "list",
+          "components": [
+            {
+              "type": "rollable",
+              "formulas": {
+                "type": "list",
+                "components": [
+                  {
+                    "type": "constant",
+                    "value": "@{vigor_pool}d6",
+                    "value_type": "string"
+                  }
+                ]
+              },
+              "text": {
+                "type": "constant",
+                "value": "Vigor",
+                "value_type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "name": "Rolar Vigor",
+      "event_names": "rolar_vigor"
+    }
+  ],
+  "resources": [],
+  "enumerated_types": [],
+  "dice": [
+    {
+      "id": "d6",
+      "name": "d6",
+      "sides": 6
+    }
+  ],
+  "combat_system": null,
+  "live_session_enabled": false
+}

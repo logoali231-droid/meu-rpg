@@ -1,0 +1,8 @@
+mechanic rolar_persuasao(
+  name = "Rolar Persuasão",
+  event_names = "rolar_persuasao"
+) = roll(
+  rolls = [
+    rollable(formulas = ["@{persuasao_pool}d6"], text = "Persuasão")
+  ]
+);

@@ -1,0 +1,122 @@
+// ==========================================
+// PULSO D6 v3.1 - CORE COMPLETO
+// ==========================================
+
+// --- 1. IDENTIFICAÇÃO E ATRIBUTOS ---
+base string nome(name="Nome") = "";
+base string conceito(name="Conceito") = "";
+
+base integer corpo(name="Corpo") = 2;
+base integer agilidade(name="Agilidade") = 2;
+base integer mente(name="Mente") = 2;
+base integer presenca(name="Presença") = 2;
+
+// --- 2. DERIVADOS ---
+calc integer vitalidade_max(name="Vitalidade Máx") = 5 + (corpo * 2);
+calc integer iniciativa(name="Iniciativa") = agilidade + mente;
+calc integer defesa(name="Defesa") = agilidade + 1 - 1;
+calc integer vontade(name="Vontade") = presenca + mente;
+calc integer espacos(name="Espaços") = corpo + 3;
+
+// --- 3. RECURSOS DE MESA ---
+base integer vitalidade_atual(name="Vitalidade Atual") = 10;
+base integer fadiga(name="Fadiga (0-3)") = 0;
+base integer estresse(name="Estresse (0-5)") = 0;
+
+// --- 4. NEGÓCIOS E DIPLOMACIA (Módulo 9) ---
+base integer riqueza_base(name="Riqueza Base (0-4)") = 2;
+base integer riqueza_temp(name="Riqueza Temporária") = 0;
+base string alavancas(name="Alavancas/Dossiês") = "";
+base string contratos(name="Contratos/Promessas") = "";
+
+// --- 5. LAÇOS (Módulo 4) ---
+calc integer max_lacos(name="Máx. Laços") = presenca + 1;
+base integer pontos_laco(name="Pontos de Laço") = 3;
+
+// --- 6. SELEÇÃO DE MÓDULOS E CONDICIONAIS ---
+base string modulo_ativo(name="Módulo Ativo") = "none";
+
+// Gatilhos (true/false) para cada módulo
+calc bool tem_magia(name="Tem Magia?") = modulo_ativo == "magic";
+calc bool tem_cyber(name="Tem Cyber?") = modulo_ativo == "cyber";
+calc bool tem_sanidade(name="Tem Sanidade?") = modulo_ativo == "sanity";
+calc bool tem_base(name="Tem Base?") = modulo_ativo == "base";
+calc bool tem_dominio(name="Tem Dominio?") = modulo_ativo == "domain";
+calc bool tem_culinaria(name="Tem Culinaria?") = modulo_ativo == "culinary";
+
+// Stats que só aparecem se o módulo estiver ativo
+base integer mistica_nivel(name="Mística Nível") = 0;
+calc integer mistica_pool(name="Mística Pilha") = when {
+  tem_magia -> mente + mistica_nivel,
+  else -> 0
+};
+
+base integer implantes_usados(name="Implantes Usados") = 0;
+calc integer limite_implantes(name="Limite de Implantes") = when {
+  tem_cyber -> corpo - 1,
+  else -> 0
+};
+
+base integer nivel_base(name="Nível da Base") = 0;
+calc integer bonus_base(name="Rolagem de Base") = when {
+  tem_base -> 3 + nivel_base,
+  else -> 0
+};
+
+base integer nivel_poder(name="Nível de Poder") = 0;
+calc integer rolagem_dominio(name="Rolagem de Domínio") = when {
+  tem_dominio -> nivel_poder,
+  else -> 0
+};
+
+base integer reserva_comida(name="Reserva de Comida (0-4)") = 4;
+calc integer penalidade_fome(name="Penalidade de Fome") = when {
+  tem_culinaria && reserva_comida == 0 -> -1,
+  else -> 0
+};
+
+// --- 7. PERÍCIAS (Nível + Pilha) ---
+base integer luta_nivel(name="Luta Nível") = 0;
+calc integer luta_pool(name="Luta Pilha") = corpo + luta_nivel;
+
+base integer vigor_nivel(name="Vigor Nível") = 0;
+calc integer vigor_pool(name="Vigor Pilha") = corpo + vigor_nivel;
+
+base integer atirar_nivel(name="Atirar Nível") = 0;
+calc integer atirar_pool(name="Atirar Pilha") = agilidade + atirar_nivel;
+
+base integer acrobacia_nivel(name="Acrobacia Nível") = 0;
+calc integer acrobacia_pool(name="Acrobacia Pilha") = agilidade + acrobacia_nivel;
+
+base integer furtividade_nivel(name="Furtividade Nível") = 0;
+calc integer furtividade_pool(name="Furtividade Pilha") = agilidade + furtividade_nivel;
+
+base integer conduzir_nivel(name="Conduzir Nível") = 0;
+calc integer conduzir_pool(name="Conduzir Pilha") = agilidade + conduzir_nivel;
+
+base integer percepcao_nivel(name="Percepção Nível") = 0;
+calc integer percepcao_pool(name="Percepção Pilha") = mente + percepcao_nivel;
+
+base integer saber_nivel(name="Saber Nível") = 0;
+calc integer saber_pool(name="Saber Pilha") = mente + saber_nivel;
+
+base integer tecnologia_nivel(name="Tecnologia Nível") = 0;
+calc integer tecnologia_pool(name="Tecnologia Pilha") = mente + tecnologia_nivel;
+
+base integer medicina_nivel(name="Medicina Nível") = 0;
+calc integer medicina_pool(name="Medicina Pilha") = mente + medicina_nivel;
+
+base integer sobrevivencia_nivel(name="Sobrevivência Nível") = 0;
+calc integer sobrevivencia_pool(name="Sobrevivência Pilha") = mente + sobrevivencia_nivel;
+
+base integer persuasao_nivel(name="Persuasão Nível") = 0;
+calc integer persuasao_pool(name="Persuasão Pilha") = presenca + persuasao_nivel;
+
+base integer enganacao_nivel(name="Enganação Nível") = 0;
+calc integer enganacao_pool(name="Enganação Pilha") = presenca + enganacao_nivel;
+
+base integer intimidacao_nivel(name="Intimidação Nível") = 0;
+calc integer intimidacao_pool(name="Intimidação Pilha") = presenca + intimidacao_nivel;
+
+base integer empatia_nivel(name="Empatia Nível") = 0;
+calc integer empatia_pool(name="Empatia Pilha") = presenca + empatia_nivel;

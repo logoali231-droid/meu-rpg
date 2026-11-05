@@ -1,0 +1,8 @@
+mechanic rolar_tecnologia(
+  name = "Rolar Tecnologia",
+  event_names = "rolar_tecnologia"
+) = roll(
+  rolls = [
+    rollable(formulas = ["@{tecnologia_pool}d6"], text = "Tecnologia")
+  ]
+);

@@ -1,0 +1,8 @@
+mechanic rolar_atirar(
+  name = "Rolar Atirar",
+  event_names = "rolar_atirar"
+) = roll(
+  rolls = [
+    rollable(formulas = ["@{atirar_pool}d6"], text = "Atirar")
+  ]
+);

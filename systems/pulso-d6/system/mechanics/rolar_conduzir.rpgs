@@ -1,0 +1,8 @@
+mechanic rolar_conduzir(
+  name = "Rolar Conduzir",
+  event_names = "rolar_conduzir"
+) = roll(
+  rolls = [
+    rollable(formulas = ["@{conduzir_pool}d6"], text = "Conduzir")
+  ]
+);

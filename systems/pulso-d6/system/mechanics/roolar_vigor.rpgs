@@ -1,0 +1,8 @@
+mechanic rolar_vigor(
+  name = "Rolar Vigor",
+  event_names = "rolar_vigor"
+) = roll(
+  rolls = [
+    rollable(formulas = ["@{vigor_pool}d6"], text = "Vigor")
+  ]
+);

@@ -1,0 +1,8 @@
+mechanic rolar_empatia(
+  name = "Rolar Empatia",
+  event_names = "rolar_empatia"
+) = roll(
+  rolls = [
+    rollable(formulas = ["@{empatia_pool}d6"], text = "Empatia")
+  ]
+);

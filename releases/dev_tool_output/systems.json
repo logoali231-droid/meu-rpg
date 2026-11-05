@@ -1,0 +1,12 @@
+{
+  "systems": [
+    {
+      "id": "pulso-d6",
+      "name": "Pulso d6",
+      "abbreviation": "P6",
+      "version": "dev",
+      "min_app_version": null,
+      "path": "pulso-d6"
+    }
+  ]
+}

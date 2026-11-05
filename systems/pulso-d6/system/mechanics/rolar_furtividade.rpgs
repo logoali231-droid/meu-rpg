@@ -1,0 +1,8 @@
+mechanic rolar_furtividade(
+  name = "Rolar Furtividade",
+  event_names = "rolar_furtividade"
+) = roll(
+  rolls = [
+    rollable(formulas = ["@{furtividade_pool}d6"], text = "Furtividade")
+  ]
+);

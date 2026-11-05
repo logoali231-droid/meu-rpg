@@ -1,0 +1,8 @@
+mechanic rolar_intimidacao(
+  name = "Rolar Intimidação",
+  event_names = "rolar_intimidacao"
+) = roll(
+  rolls = [
+    rollable(formulas = ["@{intimidacao_pool}d6"], text = "Intimidação")
+  ]
+);
