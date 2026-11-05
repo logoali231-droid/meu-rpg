@@ -120,3 +120,58 @@ calc integer intimidacao_pool(name="Intimidação Pilha") = presenca + intimidac
 
 base integer empatia_nivel(name="Empatia Nível") = 0;
 calc integer empatia_pool(name="Empatia Pilha") = presenca + empatia_nivel;
+
+// --- SELETOR DE MÓDULO ---
+base string modulo_ativo(name="Módulo Ativo") = "none";
+
+// --- GATILHOS (true/false) ---
+calc bool tem_magia(name="Tem Magia?") = modulo_ativo == "magic";
+calc bool tem_cyber(name="Tem Cibernética?") = modulo_ativo == "cyber";
+calc bool tem_sanidade(name="Tem Sanidade?") = modulo_ativo == "sanity";
+calc bool tem_lacos(name="Tem Laços?") = modulo_ativo == "bonds";
+calc bool tem_culinaria(name="Tem Culinária?") = modulo_ativo == "culinary";
+calc bool tem_base(name="Tem Base?") = modulo_ativo == "base";
+calc bool tem_dominio(name="Tem Domínio?") = modulo_ativo == "domain";
+
+// --- EXEMPLOS DE STATS CONDICIONAIS ---
+// Magia (só calcula se tem_magia for true)
+base integer mistica_nivel(name="Mística (Nível)") = 0;
+calc integer mistica_pool(name="Mística (Pilha)") = when {
+  tem_magia -> mente + mistica_nivel,
+  else -> 0
+};
+
+// Cibernética
+base integer implantes_usados(name="Implantes Usados") = 0;
+calc integer limite_implantes(name="Limite de Implantes") = when {
+  tem_cyber -> corpo - 1,
+  else -> 0
+};
+
+// Sanidade
+base integer estresse(name="Estresse") = 0;
+calc integer penalidade_estresse(name="Penalidade de Estresse") = when {
+  tem_sanidade && estresse >= 4 -> -2,
+  tem_sanidade && estresse >= 2 -> -1,
+  else -> 0
+};
+
+// Laços
+calc integer max_lacos(name="Máx. Laços") = when {
+  tem_lacos -> presenca + 1,
+  else -> 0
+};
+
+// Base
+base integer nivel_base(name="Nível da Base") = 0;
+calc integer bonus_base(name="Bônus da Base") = when {
+  tem_base -> nivel_base + 3,
+  else -> 0
+};
+
+// Domínio
+base integer nivel_poder(name="Nível de Poder") = 0;
+calc integer rolagem_dominio(name="Rolagem de Domínio") = when {
+  tem_dominio -> nivel_poder,
+  else -> 0
+};
