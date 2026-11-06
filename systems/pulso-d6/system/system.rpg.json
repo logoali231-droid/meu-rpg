@@ -4,259 +4,259 @@
   "name": "Pulso d6",
   "abbreviation": "P6",
   "version": "1.1.0",
-  "character_display_name": "name",
+  "character_display_name": "nome",
   "character_stats": "character_stats.rpgs",
-  "character_indexed_stats": ["name"],
-"character_sheet_sections": [
-  {
-    "type": "CharacterSheetSection",
-    "id": "identidade",
-    "view": {
-      "type": "section",
-      "id": "sec_identidade",
-      "header": "Identidade",
-      "content": [
-        { "type": "stat", "id": "v_nome", "stat": "nome" },
-        { "type": "stat", "id": "v_conceito", "stat": "conceito" },
-        { "type": "stat", "id": "v_cenario", "stat": "cenario" },
-        { "type": "stat", "id": "v_riqueza_base", "stat": "riqueza_base" },
-        { "type": "select", "id": "v_modulo", "stat": "modulo_ativo", "options": ["none", "magic", "cyber", "sanity", "bonds", "culinary", "base", "domain"] }
-      ]
+  "character_indexed_stats": ["nome"],
+  "character_sheet_sections": [
+    {
+      "type": "CharacterSheetSection",
+      "id": "identidade",
+      "view": {
+        "type": "section",
+        "id": "sec_identidade",
+        "header": "Identidade",
+        "content": [
+          { "type": "stat", "id": "v_nome", "stat": "nome" },
+          { "type": "stat", "id": "v_conceito", "stat": "conceito" },
+          { "type": "stat", "id": "v_cenario", "stat": "cenario" },
+          { "type": "stat", "id": "v_riqueza_base", "stat": "riqueza_base" },
+          { "type": "select", "id": "v_modulo", "stat": "modulo_ativo", "options": ["none", "magic", "cyber", "sanity", "bonds", "culinary", "base", "domain"] }
+        ]
+      }
+    },
+    {
+      "type": "CharacterSheetSection",
+      "id": "atributos",
+      "view": {
+        "type": "section",
+        "id": "sec_atributos",
+        "header": "Atributos",
+        "content": [
+          { "type": "stat", "id": "v_corpo", "stat": "corpo" },
+          { "type": "stat", "id": "v_agilidade", "stat": "agilidade" },
+          { "type": "stat", "id": "v_mente", "stat": "mente" },
+          { "type": "stat", "id": "v_presenca", "stat": "presenca" }
+        ]
+      }
+    },
+    {
+      "type": "CharacterSheetSection",
+      "id": "derivados",
+      "view": {
+        "type": "section",
+        "id": "sec_derivados",
+        "header": "Valores Derivados",
+        "content": [
+          { "type": "stat", "id": "v_vit_max", "stat": "vitalidade_max" },
+          { "type": "stat", "id": "v_iniciativa", "stat": "iniciativa" },
+          { "type": "stat", "id": "v_defesa", "stat": "defesa" },
+          { "type": "stat", "id": "v_vontade", "stat": "vontade" },
+          { "type": "stat", "id": "v_espacos", "stat": "espacos" }
+        ]
+      }
+    },
+    {
+      "type": "CharacterSheetSection",
+      "id": "pericias",
+      "view": {
+        "type": "section",
+        "id": "sec_pericias",
+        "header": "Perícias",
+        "content": [
+          { "type": "stat", "id": "v_luta", "stat": "luta_nivel" },
+          { "type": "button", "id": "b_luta", "text": "Rolar Luta", "event_names": ["rolar_luta"] },
+          { "type": "stat", "id": "v_vigor", "stat": "vigor_nivel" },
+          { "type": "button", "id": "b_vigor", "text": "Rolar Vigor", "event_names": ["rolar_vigor"] },
+          { "type": "stat", "id": "v_atirar", "stat": "atirar_nivel" },
+          { "type": "button", "id": "b_atirar", "text": "Rolar Atirar", "event_names": ["rolar_atirar"] },
+          { "type": "stat", "id": "v_acrobacia", "stat": "acrobacia_nivel" },
+          { "type": "button", "id": "b_acrobacia", "text": "Rolar Acrobacia", "event_names": ["rolar_acrobacia"] },
+          { "type": "stat", "id": "v_furtividade", "stat": "furtividade_nivel" },
+          { "type": "button", "id": "b_furtividade", "text": "Rolar Furtividade", "event_names": ["rolar_furtividade"] },
+          { "type": "stat", "id": "v_conduzir", "stat": "conduzir_nivel" },
+          { "type": "button", "id": "b_conduzir", "text": "Rolar Conduzir", "event_names": ["rolar_conduzir"] },
+          { "type": "stat", "id": "v_percepcao", "stat": "percepcao_nivel" },
+          { "type": "button", "id": "b_percepcao", "text": "Rolar Percepção", "event_names": ["rolar_percepcao"] },
+          { "type": "stat", "id": "v_saber", "stat": "saber_nivel" },
+          { "type": "button", "id": "b_saber", "text": "Rolar Saber", "event_names": ["rolar_saber"] },
+          { "type": "stat", "id": "v_tecnologia", "stat": "tecnologia_nivel" },
+          { "type": "button", "id": "b_tecnologia", "text": "Rolar Tecnologia", "event_names": ["rolar_tecnologia"] },
+          { "type": "stat", "id": "v_medicina", "stat": "medicina_nivel" },
+          { "type": "button", "id": "b_medicina", "text": "Rolar Medicina", "event_names": ["rolar_medicina"] },
+          { "type": "stat", "id": "v_sobrevivencia", "stat": "sobrevivencia_nivel" },
+          { "type": "button", "id": "b_sobrevivencia", "text": "Rolar Sobrevivência", "event_names": ["rolar_sobrevivencia"] },
+          { "type": "stat", "id": "v_persuasao", "stat": "persuasao_nivel" },
+          { "type": "button", "id": "b_persuasao", "text": "Rolar Persuasão", "event_names": ["rolar_persuasao"] },
+          { "type": "stat", "id": "v_enganacao", "stat": "enganacao_nivel" },
+          { "type": "button", "id": "b_enganacao", "text": "Rolar Enganação", "event_names": ["rolar_enganacao"] },
+          { "type": "stat", "id": "v_intimidacao", "stat": "intimidacao_nivel" },
+          { "type": "button", "id": "b_intimidacao", "text": "Rolar Intimidação", "event_names": ["rolar_intimidacao"] },
+          { "type": "stat", "id": "v_empatia", "stat": "empatia_nivel" },
+          { "type": "button", "id": "b_empatia", "text": "Rolar Empatia", "event_names": ["rolar_empatia"] }
+        ]
+      }
+    },
+    {
+      "type": "CharacterSheetSection",
+      "id": "vitalidade",
+      "view": {
+        "type": "section",
+        "id": "sec_vitalidade",
+        "header": "Vitalidade e Estados",
+        "content": [
+          { "type": "stat", "id": "v_vit_atual", "stat": "vitalidade_atual" },
+          { "type": "stat", "id": "v_fadiga", "stat": "fadiga" },
+          { "type": "stat", "id": "v_estresse", "stat": "estresse" },
+          { "type": "stat", "id": "v_estabilizado", "stat": "estabilizado" }
+        ]
+      }
+    },
+    {
+      "type": "CharacterSheetSection",
+      "id": "negocios",
+      "view": {
+        "type": "section",
+        "id": "sec_negocios",
+        "header": "Negócios e Diplomacia (Core)",
+        "content": [
+          { "type": "stat", "id": "v_riqueza_temp", "stat": "riqueza_temp" },
+          { "type": "stat", "id": "v_alavancas", "stat": "alavancas" },
+          { "type": "stat", "id": "v_contratos", "stat": "contratos" }
+        ]
+      }
+    },
+    {
+      "type": "CharacterSheetSection",
+      "id": "secao_lacos",
+      "view": {
+        "type": "section",
+        "id": "sec_lacos",
+        "header": "Laços (Módulo)",
+        "is_visible": { "type": "stat", "stat": "tem_lacos" },
+        "content": [
+          { "type": "stat", "id": "v_max_lacos", "stat": "max_lacos" },
+          { "type": "stat", "id": "v_pontos_laco", "stat": "pontos_laco" }
+        ]
+      }
+    },
+    {
+      "type": "CharacterSheetSection",
+      "id": "secao_magia",
+      "view": {
+        "type": "section",
+        "id": "sec_magia",
+        "header": "Magia (Módulo)",
+        "is_visible": { "type": "stat", "stat": "tem_magia" },
+        "content": [
+          { "type": "stat", "id": "v_mistica_nivel", "stat": "mistica_nivel" },
+          { "type": "stat", "id": "v_mistica_pool", "stat": "mistica_pool" },
+          { "type": "button", "id": "b_mistica", "text": "Rolar Mística", "event_names": ["rolar_mistica"] }
+        ]
+      }
+    },
+    {
+      "type": "CharacterSheetSection",
+      "id": "secao_cyber",
+      "view": {
+        "type": "section",
+        "id": "sec_cyber",
+        "header": "Cibernética (Módulo)",
+        "is_visible": { "type": "stat", "stat": "tem_cyber" },
+        "content": [
+          { "type": "stat", "id": "v_implantes", "stat": "implantes_usados" },
+          { "type": "stat", "id": "v_limite_implantes", "stat": "limite_implantes" },
+          { "type": "button", "id": "b_hack", "text": "Rolar Hack", "event_names": ["rolar_hack"] }
+        ]
+      }
+    },
+    {
+      "type": "CharacterSheetSection",
+      "id": "secao_sanidade",
+      "view": {
+        "type": "section",
+        "id": "sec_sanidade",
+        "header": "Sanidade (Módulo)",
+        "is_visible": { "type": "stat", "stat": "tem_sanidade" },
+        "content": [
+          { "type": "stat", "id": "v_estresse_san", "stat": "estresse" },
+          { "type": "button", "id": "b_vontade_san", "text": "Rolar Vontade", "event_names": ["rolar_vontade_estresse"] }
+        ]
+      }
+    },
+    {
+      "type": "CharacterSheetSection",
+      "id": "secao_culinaria",
+      "view": {
+        "type": "section",
+        "id": "sec_culinaria",
+        "header": "Culinária (Módulo)",
+        "is_visible": { "type": "stat", "stat": "tem_culinaria" },
+        "content": [
+          { "type": "stat", "id": "v_reserva_comida", "stat": "reserva_comida" },
+          { "type": "stat", "id": "v_penalidade_fome", "stat": "penalidade_fome" }
+        ]
+      }
+    },
+    {
+      "type": "CharacterSheetSection",
+      "id": "secao_base",
+      "view": {
+        "type": "section",
+        "id": "sec_base",
+        "header": "Base (Módulo)",
+        "is_visible": { "type": "stat", "stat": "tem_base" },
+        "content": [
+          { "type": "stat", "id": "v_nivel_base", "stat": "nivel_base" },
+          { "type": "stat", "id": "v_bonus_base", "stat": "bonus_base" }
+        ]
+      }
+    },
+    {
+      "type": "CharacterSheetSection",
+      "id": "secao_dominio",
+      "view": {
+        "type": "section",
+        "id": "sec_dominio",
+        "header": "Domínio (Módulo)",
+        "is_visible": { "type": "stat", "stat": "tem_dominio" },
+        "content": [
+          { "type": "stat", "id": "v_nivel_poder", "stat": "nivel_poder" },
+          { "type": "stat", "id": "v_rolagem_dominio", "stat": "rolagem_dominio" }
+        ]
+      }
+    },
+    {
+      "type": "CharacterSheetSection",
+      "id": "equipamento",
+      "view": {
+        "type": "section",
+        "id": "sec_equipamento",
+        "header": "Equipamento e Traços",
+        "content": [
+          { "type": "stat", "id": "v_arma_nome", "stat": "arma_nome" },
+          { "type": "stat", "id": "v_arma_dano", "stat": "arma_dano" },
+          { "type": "stat", "id": "v_armadura_nome", "stat": "armadura_nome" },
+          { "type": "stat", "id": "v_armadura_reducao", "stat": "armadura_reducao" },
+          { "type": "stat", "id": "v_vantagens", "stat": "vantagens" },
+          { "type": "stat", "id": "v_desvantagens", "stat": "desvantagens" }
+        ]
+      }
+    },
+    {
+      "type": "CharacterSheetSection",
+      "id": "progresso",
+      "view": {
+        "type": "section",
+        "id": "sec_progresso",
+        "header": "Progresso e Notas",
+        "content": [
+          { "type": "stat", "id": "v_xp", "stat": "xp" },
+          { "type": "stat", "id": "v_sessoes", "stat": "sessoes" },
+          { "type": "stat", "id": "v_notas", "stat": "notas" }
+        ]
+      }
     }
-  },
-  {
-    "type": "CharacterSheetSection",
-    "id": "atributos",
-    "view": {
-      "type": "section",
-      "id": "sec_atributos",
-      "header": "Atributos",
-      "content": [
-        { "type": "stat", "id": "v_corpo", "stat": "corpo" },
-        { "type": "stat", "id": "v_agilidade", "stat": "agilidade" },
-        { "type": "stat", "id": "v_mente", "stat": "mente" },
-        { "type": "stat", "id": "v_presenca", "stat": "presenca" }
-      ]
-    }
-  },
-  {
-    "type": "CharacterSheetSection",
-    "id": "derivados",
-    "view": {
-      "type": "section",
-      "id": "sec_derivados",
-      "header": "Valores Derivados",
-      "content": [
-        { "type": "stat", "id": "v_vit_max", "stat": "vitalidade_max" },
-        { "type": "stat", "id": "v_iniciativa", "stat": "iniciativa" },
-        { "type": "stat", "id": "v_defesa", "stat": "defesa" },
-        { "type": "stat", "id": "v_vontade", "stat": "vontade" },
-        { "type": "stat", "id": "v_espacos", "stat": "espacos" }
-      ]
-    }
-  },
-  {
-    "type": "CharacterSheetSection",
-    "id": "pericias",
-    "view": {
-      "type": "section",
-      "id": "sec_pericias",
-      "header": "Perícias",
-      "content": [
-        { "type": "stat", "id": "v_luta", "stat": "luta_nivel" },
-        { "type": "button", "id": "b_luta", "text": "Rolar Luta", "event_names": ["rolar_luta"] },
-        { "type": "stat", "id": "v_vigor", "stat": "vigor_nivel" },
-        { "type": "button", "id": "b_vigor", "text": "Rolar Vigor", "event_names": ["rolar_vigor"] },
-        { "type": "stat", "id": "v_atirar", "stat": "atirar_nivel" },
-        { "type": "button", "id": "b_atirar", "text": "Rolar Atirar", "event_names": ["rolar_atirar"] },
-        { "type": "stat", "id": "v_acrobacia", "stat": "acrobacia_nivel" },
-        { "type": "button", "id": "b_acrobacia", "text": "Rolar Acrobacia", "event_names": ["rolar_acrobacia"] },
-        { "type": "stat", "id": "v_furtividade", "stat": "furtividade_nivel" },
-        { "type": "button", "id": "b_furtividade", "text": "Rolar Furtividade", "event_names": ["rolar_furtividade"] },
-        { "type": "stat", "id": "v_conduzir", "stat": "conduzir_nivel" },
-        { "type": "button", "id": "b_conduzir", "text": "Rolar Conduzir", "event_names": ["rolar_conduzir"] },
-        { "type": "stat", "id": "v_percepcao", "stat": "percepcao_nivel" },
-        { "type": "button", "id": "b_percepcao", "text": "Rolar Percepção", "event_names": ["rolar_percepcao"] },
-        { "type": "stat", "id": "v_saber", "stat": "saber_nivel" },
-        { "type": "button", "id": "b_saber", "text": "Rolar Saber", "event_names": ["rolar_saber"] },
-        { "type": "stat", "id": "v_tecnologia", "stat": "tecnologia_nivel" },
-        { "type": "button", "id": "b_tecnologia", "text": "Rolar Tecnologia", "event_names": ["rolar_tecnologia"] },
-        { "type": "stat", "id": "v_medicina", "stat": "medicina_nivel" },
-        { "type": "button", "id": "b_medicina", "text": "Rolar Medicina", "event_names": ["rolar_medicina"] },
-        { "type": "stat", "id": "v_sobrevivencia", "stat": "sobrevivencia_nivel" },
-        { "type": "button", "id": "b_sobrevivencia", "text": "Rolar Sobrevivência", "event_names": ["rolar_sobrevivencia"] },
-        { "type": "stat", "id": "v_persuasao", "stat": "persuasao_nivel" },
-        { "type": "button", "id": "b_persuasao", "text": "Rolar Persuasão", "event_names": ["rolar_persuasao"] },
-        { "type": "stat", "id": "v_enganacao", "stat": "enganacao_nivel" },
-        { "type": "button", "id": "b_enganacao", "text": "Rolar Enganação", "event_names": ["rolar_enganacao"] },
-        { "type": "stat", "id": "v_intimidacao", "stat": "intimidacao_nivel" },
-        { "type": "button", "id": "b_intimidacao", "text": "Rolar Intimidação", "event_names": ["rolar_intimidacao"] },
-        { "type": "stat", "id": "v_empatia", "stat": "empatia_nivel" },
-        { "type": "button", "id": "b_empatia", "text": "Rolar Empatia", "event_names": ["rolar_empatia"] }
-      ]
-    }
-  },
-  {
-    "type": "CharacterSheetSection",
-    "id": "vitalidade",
-    "view": {
-      "type": "section",
-      "id": "sec_vitalidade",
-      "header": "Vitalidade e Estados",
-      "content": [
-        { "type": "stat", "id": "v_vit_atual", "stat": "vitalidade_atual" },
-        { "type": "stat", "id": "v_fadiga", "stat": "fadiga" },
-        { "type": "stat", "id": "v_estresse", "stat": "estresse" },
-        { "type": "stat", "id": "v_estabilizado", "stat": "estabilizado" }
-      ]
-    }
-  },
-  {
-    "type": "CharacterSheetSection",
-    "id": "negocios",
-    "view": {
-      "type": "section",
-      "id": "sec_negocios",
-      "header": "Negócios e Diplomacia (Core)",
-      "content": [
-        { "type": "stat", "id": "v_riqueza_temp", "stat": "riqueza_temp" },
-        { "type": "stat", "id": "v_alavancas", "stat": "alavancas" },
-        { "type": "stat", "id": "v_contratos", "stat": "contratos" }
-      ]
-    }
-  },
-  {
-    "type": "CharacterSheetSection",
-    "id": "secao_lacos",
-    "view": {
-      "type": "section",
-      "id": "sec_lacos",
-      "header": "Laços (Módulo)",
-      "is_visible": { "type": "stat", "stat": "tem_lacos" },
-      "content": [
-        { "type": "stat", "id": "v_max_lacos", "stat": "max_lacos" },
-        { "type": "stat", "id": "v_pontos_laco", "stat": "pontos_laco" }
-      ]
-    }
-  },
-  {
-    "type": "CharacterSheetSection",
-    "id": "secao_magia",
-    "view": {
-      "type": "section",
-      "id": "sec_magia",
-      "header": "Magia (Módulo)",
-      "is_visible": { "type": "stat", "stat": "tem_magia" },
-      "content": [
-        { "type": "stat", "id": "v_mistica_nivel", "stat": "mistica_nivel" },
-        { "type": "stat", "id": "v_mistica_pool", "stat": "mistica_pool" },
-        { "type": "button", "id": "b_mistica", "text": "Rolar Mística", "event_names": ["rolar_mistica"] }
-      ]
-    }
-  },
-  {
-    "type": "CharacterSheetSection",
-    "id": "secao_cyber",
-    "view": {
-      "type": "section",
-      "id": "sec_cyber",
-      "header": "Cibernética (Módulo)",
-      "is_visible": { "type": "stat", "stat": "tem_cyber" },
-      "content": [
-        { "type": "stat", "id": "v_implantes", "stat": "implantes_usados" },
-        { "type": "stat", "id": "v_limite_implantes", "stat": "limite_implantes" },
-        { "type": "button", "id": "b_hack", "text": "Rolar Hack", "event_names": ["rolar_hack"] }
-      ]
-    }
-  },
-  {
-    "type": "CharacterSheetSection",
-    "id": "secao_sanidade",
-    "view": {
-      "type": "section",
-      "id": "sec_sanidade",
-      "header": "Sanidade (Módulo)",
-      "is_visible": { "type": "stat", "stat": "tem_sanidade" },
-      "content": [
-        { "type": "stat", "id": "v_estresse_san", "stat": "estresse" },
-        { "type": "button", "id": "b_vontade_san", "text": "Rolar Vontade", "event_names": ["rolar_vontade_estresse"] }
-      ]
-    }
-  },
-  {
-    "type": "CharacterSheetSection",
-    "id": "secao_culinaria",
-    "view": {
-      "type": "section",
-      "id": "sec_culinaria",
-      "header": "Culinária (Módulo)",
-      "is_visible": { "type": "stat", "stat": "tem_culinaria" },
-      "content": [
-        { "type": "stat", "id": "v_reserva_comida", "stat": "reserva_comida" },
-        { "type": "stat", "id": "v_penalidade_fome", "stat": "penalidade_fome" }
-      ]
-    }
-  },
-  {
-    "type": "CharacterSheetSection",
-    "id": "secao_base",
-    "view": {
-      "type": "section",
-      "id": "sec_base",
-      "header": "Base (Módulo)",
-      "is_visible": { "type": "stat", "stat": "tem_base" },
-      "content": [
-        { "type": "stat", "id": "v_nivel_base", "stat": "nivel_base" },
-        { "type": "stat", "id": "v_bonus_base", "stat": "bonus_base" }
-      ]
-    }
-  },
-  {
-    "type": "CharacterSheetSection",
-    "id": "secao_dominio",
-    "view": {
-      "type": "section",
-      "id": "sec_dominio",
-      "header": "Domínio (Módulo)",
-      "is_visible": { "type": "stat", "stat": "tem_dominio" },
-      "content": [
-        { "type": "stat", "id": "v_nivel_poder", "stat": "nivel_poder" },
-        { "type": "stat", "id": "v_rolagem_dominio", "stat": "rolagem_dominio" }
-      ]
-    }
-  },
-  {
-    "type": "CharacterSheetSection",
-    "id": "equipamento",
-    "view": {
-      "type": "section",
-      "id": "sec_equipamento",
-      "header": "Equipamento e Traços",
-      "content": [
-        { "type": "stat", "id": "v_arma_nome", "stat": "arma_nome" },
-        { "type": "stat", "id": "v_arma_dano", "stat": "arma_dano" },
-        { "type": "stat", "id": "v_armadura_nome", "stat": "armadura_nome" },
-        { "type": "stat", "id": "v_armadura_reducao", "stat": "armadura_reducao" },
-        { "type": "stat", "id": "v_vantagens", "stat": "vantagens" },
-        { "type": "stat", "id": "v_desvantagens", "stat": "desvantagens" }
-      ]
-    }
-  },
-  {
-    "type": "CharacterSheetSection",
-    "id": "progresso",
-    "view": {
-      "type": "section",
-      "id": "sec_progresso",
-      "header": "Progresso e Notas",
-      "content": [
-        { "type": "stat", "id": "v_xp", "stat": "xp" },
-        { "type": "stat", "id": "v_sessoes", "stat": "sessoes" },
-        { "type": "stat", "id": "v_notas", "stat": "notas" }
-      ]
-    }
-  }
-],
+  ],
   "progression_systems": [],
   "mechanics": [],
   "resources": [],
@@ -265,47 +265,19 @@
       "id": "module_types",
       "name": "Módulo Ativo",
       "types": [
-        {
-          "id": "none",
-          "name": "Nenhum (Só Core)"
-        },
-        {
-          "id": "magic",
-          "name": "Magia e Oculto"
-        },
-        {
-          "id": "cyber",
-          "name": "Cibernética"
-        },
-        {
-          "id": "sanity",
-          "name": "Sanidade / Horror"
-        },
-        {
-          "id": "bonds",
-          "name": "Laços e Relações"
-        },
-        {
-          "id": "culinary",
-          "name": "Culinária e Sustento"
-        },
-        {
-          "id": "base",
-          "name": "Base e Crafting"
-        },
-        {
-          "id": "domain",
-          "name": "Domínio e Organização"
-        }
+        { "id": "none", "name": "Nenhum (Só Core)" },
+        { "id": "magic", "name": "Magia e Oculto" },
+        { "id": "cyber", "name": "Cibernética" },
+        { "id": "sanity", "name": "Sanidade / Horror" },
+        { "id": "bonds", "name": "Laços e Relações" },
+        { "id": "culinary", "name": "Culinária e Sustento" },
+        { "id": "base", "name": "Base e Crafting" },
+        { "id": "domain", "name": "Domínio e Organização" }
       ]
     }
   ],
   "dice": [
-    {
-      "id": "d6",
-      "name": "d6",
-      "sides": 6
-    }
+    { "id": "d6", "name": "d6", "sides": 6 }
   ],
   "combat_system": null,
   "live_session_enabled": false

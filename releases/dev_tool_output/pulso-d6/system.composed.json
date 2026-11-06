@@ -4,7 +4,7 @@
   "name": "Pulso d6",
   "abbreviation": "P6",
   "version": "1.1.0",
-  "character_display_name": "name",
+  "character_display_name": "nome",
   "character_stats": [
     {
       "id": "nome",
@@ -1626,7 +1626,7 @@
     }
   ],
   "character_indexed_stats": [
-    "name"
+    "nome"
   ],
   "character_sheet_sections": [
     {
